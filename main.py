@@ -10,5 +10,5 @@ def main(file_path):
     average = functie2(records)
     return average
 
-file_path = "squirrel_edges.csv"
+file_path = "D:\Users\Marilene\Documents\DS5 week2\DS5Week2\squirrel_edges.csv"
 print(main(file_path))
