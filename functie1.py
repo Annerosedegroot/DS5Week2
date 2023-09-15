@@ -1,3 +1,4 @@
+import csv
 def functie1(filecsv):
     """ We willen ene lijst met de record van de csv uitkrijgen """
     records = []
