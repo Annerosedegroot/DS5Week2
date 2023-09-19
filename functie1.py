@@ -1,6 +1,10 @@
 import csv
 def functie1(filecsv):
-    """ We willen ene lijst met de record van de csv uitkrijgen """
+    """ 
+    functie geeft een lijst met de record van de csv uitkrijgen 
+    arg: csv file
+    Output: list met records
+    """
     records = []
     with open(filecsv, 'r') as file:
         csv_reader = csv.DictReader(file)
