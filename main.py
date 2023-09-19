@@ -12,3 +12,4 @@ def main(file_path):
 
 file_path = input(r'Geef csv')
 print(main(file_path))
+blub
