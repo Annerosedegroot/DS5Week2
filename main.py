@@ -10,5 +10,5 @@ def main(file_path):
     average = functie2.functie2(records)
     return average
 
-file_path = r'C:\Users\anner\Documents\Data_Science\Data Science 5\DS5Week2\squirrel_edges.csv'
+file_path = input(r'Geef csv')
 print(main(file_path))
