@@ -2,67 +2,62 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def calculate_mandelbrot(c: complex, max_iter: int) -> int:
+# maak verschillende functies
+
+def calculate_mandelbrot(c) -> int:
     """
-    Calculate the diverging index for a given complex number c in the Mandelbrot set.
-    
+    Bereken de diverging index voor een gegeven complex getal c.    
     Args:
-        c (complex): The complex number for which we want to calculate the diverging index.
-        max_iter (int): The maximum number of iterations to check for divergence.
+        complexe getal c.
         
     Returns:
-        int: The diverging index (or 0 if it does not diverge).
+        int: De diverging index.
     """
-    z = 0
-    for n in range(max_iter):
-        if abs(z) > 2:
+    a = 0
+    for n in range(100):
+        if abs(a) > 2:
             return n
-        z = z**2 + c
+        a = a**2 + c
     return 0
 
-def generate_mandelbrot_image(width: int, height: int, x_range: tuple, y_range: tuple, max_iter: int) -> np.ndarray:
+def draw_mandel(width):
     """
-    Generate a Mandelbrot image.
+    Generaten van een Mandelbrot image.
 
     Args:
-        width (int): Width of the image.
-        height (int): Height of the image.
-        x_range (tuple): Tuple containing the minimum and maximum x values for the range.
-        y_range (tuple): Tuple containing the minimum and maximum y values for the range.
-        max_iter (int): The maximum number of iterations to check for divergence.
+        width: Breedte en hoogte van het plaatje.
 
     Returns:
-        np.ndarray: A numpy array representing the Mandelbrot image.
+        Een numpy array voor het Mandelbrot plaatje met coördinaten.
     """
-    x_min, x_max = x_range
-    y_min, y_max = y_range
-    image = np.zeros((height, width))
+    x_min, x_max = (-1.5, 0.5)
+    y_min, y_max = (-1, 1)
+    image = np.zeros((width, width))
 
-    for i in range(height):
-        for j in range(width):
+    for i in range(width):
+        for j in range(width):     
             x = x_min + (x_max - x_min) * j / (width - 1)
-            y = y_min + (y_max - y_min) * i / (height - 1)
+            y = y_min + (y_max - y_min) * i / (width - 1)
             c = complex(x, y)
-            image[i, j] = calculate_mandelbrot(c, max_iter)
+            image[i, j] = calculate_mandelbrot(c)
 
     return image
 
-def plot_mandelbrot_image(image: np.ndarray, colormap='hot'):
+def plot_mandelbrot_image(image):
     """
-    Visualize the Mandelbrot image using a specified colormap.
+    Plaatje maken met matplotlib :)
 
     Args:
-        image (np.ndarray): A numpy array representing the Mandelbrot image.
-        colormap (str): The name of the colormap to use (e.g., 'hot', 'viridis', 'jet', etc.).
+        De coördinaten array.
+    Output:
+        Mandelbrot plaatje met mooie kleuren, voor andere mooie kleuren: twilight_shifted ;)
     """
-    plt.imshow(image, cmap=colormap, extent=[-1.5, 0.5, -1, 1])
-    plt.colorbar()
-    plt.title('Mandelbrot Set')
+    plt.imshow(image, cmap='gnuplot2', extent=[-1.5, 0.5, -1, 1])
+    plt.title('Mandelbrot Plaatje')
     plt.xlabel('Real')
     plt.ylabel('Imaginary')
     plt.show()
 
-# Example usage with a different colormap (e.g., 'viridis'):
-if __name__ == '__main__':
-    mandelbrot_image = generate_mandelbrot_image(200, 200, (-1.5, 0.5), (-1, 1), max_iter=100)
-    plot_mandelbrot_image(mandelbrot_image, colormap='twilight_shifted')
+
+mandelbrot_image = draw_mandel(200)
+plot_mandelbrot_image(mandelbrot_image)
