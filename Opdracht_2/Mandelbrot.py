@@ -48,21 +48,22 @@ def generate_mandelbrot_image(width: int, height: int, x_range: tuple, y_range: 
 
     return image
 
-def plot_mandelbrot_image(image: np.ndarray):
+def plot_mandelbrot_image(image: np.ndarray, colormap='hot'):
     """
-    Visualize the Mandelbrot image using matplotlib.
+    Visualize the Mandelbrot image using a specified colormap.
 
     Args:
         image (np.ndarray): A numpy array representing the Mandelbrot image.
+        colormap (str): The name of the colormap to use (e.g., 'hot', 'viridis', 'jet', etc.).
     """
-    plt.imshow(image, cmap='hot', extent=[-1.5, 0.5, -1, 1])
+    plt.imshow(image, cmap=colormap, extent=[-1.5, 0.5, -1, 1])
     plt.colorbar()
     plt.title('Mandelbrot Set')
     plt.xlabel('Real')
     plt.ylabel('Imaginary')
     plt.show()
 
-# Example usage:
+# Example usage with a different colormap (e.g., 'viridis'):
 if __name__ == '__main__':
     mandelbrot_image = generate_mandelbrot_image(200, 200, (-1.5, 0.5), (-1, 1), max_iter=100)
-    plot_mandelbrot_image(mandelbrot_image)
+    plot_mandelbrot_image(mandelbrot_image, colormap='twilight_shifted')
