@@ -60,7 +60,7 @@ def plot_network(G):
 n0 = 5
 
 # Het gewenste totale aantal nodes in het netwerk
-n = 10   # Veranderd naar 10 maar moet 400 zijn.
+n = 400   # Veranderd naar 10 maar moet 400 zijn.
 
 # Aantal nodes waarmee elke nieuwe node zich verbindt
 M = 4
