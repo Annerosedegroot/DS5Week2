@@ -31,7 +31,7 @@ def genereer_barabasi(n0, n, M):
 
         # Lijst van alle bestaande nodes
         existing_nodes = list(G.nodes)
-        existing_nodes.remove(0)
+        #existing_nodes.remove(0)
         
         # Bereken de kansverdeling (page rank?) voor het verbinden van de nieuwe node met bestaande nodes
         node_degrees = dict(G.degree())
