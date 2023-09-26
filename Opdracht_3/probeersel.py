@@ -35,7 +35,7 @@ def genereer_barabasi(n0, n, M):
 
         # Bereken de kansverdeling (page rank?) voor het verbinden van de nieuwe node met bestaande nodes
         node_degrees = dict(G.degree())
-        prob = [node_degrees[node] / sum(node_degrees.values()) for node in G.nodes]
+        prob = [node_degrees[node] / sum(node_degrees.values()) for node in existing_nodes]
         print(i, prob)
         # Verbind de nieuwe node met M bestaande nodes op basis van de kansverdeling
         selected_nodes = random.choices(existing_nodes, weights=prob, k=M)
