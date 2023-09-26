@@ -23,7 +23,7 @@ def genereer_barabasi(n0, n, M):
     G = nx.star_graph(n0)
 
     # Voeg de resterende nodes een voor een toe
-    for i in range(n0 + 1, 10): ############10 moet uiteindelijk veranderen naar n+1, 
+    for i in range(n0 + 1, n + 1): ############10 moet uiteindelijk veranderen naar n+1, 
                                 #maar dit is overzichtelijker voor wat er gebeurd. Check ook de probability dit is raar
                                 #node 0 zou toch de kleinste kans moeten hebben om verbonden te geraken met node 6, die lijst zou omgekeer dmoeten zijn???
         # Voeg de nieuwe node toe
@@ -31,6 +31,7 @@ def genereer_barabasi(n0, n, M):
 
         # Lijst van alle bestaande nodes
         existing_nodes = list(G.nodes)
+        print(existing_nodes)
 
         # Bereken de kansverdeling (page rank?) voor het verbinden van de nieuwe node met bestaande nodes
         node_degrees = dict(G.degree())
@@ -59,7 +60,7 @@ def plot_network(G):
 n0 = 5
 
 # Het gewenste totale aantal nodes in het netwerk
-n = 400
+n = 10 # ik heb hier even 10 van gemaakt zodat in de functie het n + 1 kan blijven
 
 # Aantal nodes waarmee elke nieuwe node zich verbindt
 M = 4
