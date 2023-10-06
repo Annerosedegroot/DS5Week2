@@ -20,6 +20,8 @@ df['country'] = df['country'].str.replace(' ', '')
 
 
 # arrival_date_year is een jaar 2099
+df['arrival_date_year'] = df['arrival_date_year'].replace(2099, 2015)
+
 
 # arrival_date_month zijn er blanks
 
