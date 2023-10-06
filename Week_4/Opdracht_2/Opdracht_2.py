@@ -4,17 +4,24 @@ import numpy as np
 df = pd.read_excel('hotelBookings.xlsx')
 
 # in kolom stays_in_week_nights is een 4.3
-df['stays_in_week_nights'] == 4.3
+df['stays_in_weekend_nights'] = df['stays_in_weekend_nights'].replace([4.3], 4)
+
 
 # kolom lead_time is een outlier 737, de rest is tussen 0 en 400
 
+
+
 # country heeft een 2 en 3 en NULL
-if df['country'] == '2' or '3' or 'NULL':
-    df.drop()
+# if df['country'] == '2' or '3' or 'NULL':
+#     df.drop()
 
 # country lay out sommige spaties
+df['country'] = df['country'].str.replace(' ', '')
+
 
 # arrival_date_year is een jaar 2099
+df['arrival_date_year'] = df['arrival_date_year'].replace(2099, 2015)
+
 
 # arrival_date_month zijn er blanks
 
