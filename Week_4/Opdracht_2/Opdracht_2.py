@@ -32,11 +32,20 @@ df['arrival_date_year'] = df['arrival_date_year'].replace(2099, 2015)
 
 
 # arrival_date_month zijn er blanks
+check_nan = df['arrival_date_month'].isnull().values.any()
+    
 
 # meal heeft spaties voor sommige waarden
+df['meal'] = df['meal'].str.replace(' ', '')
+
 
 # adults iemand heeft 3500 personene
+mean = (sum(df['adults'])-3500) / len(df['adults'])
+afgerond = round(mean)
+df['adults'] = df['adults'].replace(3500, afgerond)
 
 # children heeft 200 en 55000 kinderen
+gemiddelde = (df[df['adults']==2]['children']).mean()
+print(gemiddelde)
 
 # rij waardes agent en company zijn omgewisseld: 223, 224, 225, 300, 392, 455, 546, 605, 633, 801, 942
